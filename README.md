@@ -1,6 +1,8 @@
 # Hallyu Harbor
 (Ongoing project) Shopping website for korean fashion enthusiast using React js and Tailwind Css
 
+![Screenshot (15)](https://github.com/jyotiv2023/hallyuharbor/assets/130778883/47f2cd1f-8504-4772-913e-6084380344bc)
+
 ![Screenshot (16)](https://github.com/jyotiv2023/hallyuharbor/assets/130778883/ef9759c6-19e0-4e14-b095-1546ca794348)
 
 
