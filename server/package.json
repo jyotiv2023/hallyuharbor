@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "backend for hallyu harbor",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koreandress",
+    "asianoutfits"
+  ],
+  "author": "Jyoti Verma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

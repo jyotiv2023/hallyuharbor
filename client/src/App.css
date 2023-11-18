@@ -1,0 +1,51 @@
+section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: var(--transition);
+}
+section.activeSlide {
+  opacity: 1;
+  transform: translateX(0);
+}
+section.lastSlide {
+  transform: translateX(-100%);
+}
+section.nextSlide {
+  transform: translateX(100%);
+}
+.wrapper {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2s;
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.btn {
+  color: #fff;
+  background-color: #8a4af3;
+  border-radius: 5px;
+  box-shadow: 2px;
+  margin-top: 30px;
+  padding: 3px;
+}
