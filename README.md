@@ -1,5 +1,5 @@
-# hallyuharbor
-Shopping website using React js and Tailwind Css
+# Hallyu Harbor
+(Ongoing project) Shopping website for korean fashion enthusiast using React js and Tailwind Css
 
 ![Screenshot (16)](https://github.com/jyotiv2023/hallyuharbor/assets/130778883/ef9759c6-19e0-4e14-b095-1546ca794348)
 
@@ -18,7 +18,7 @@ Shopping website using React js and Tailwind Css
 
 ## About
 
-Welcome to the Korean Drama Outfit Shop! 🛍️ This eCommerce website is a place for fans of Korean dramas to explore and purchase outfits inspired by their favorite characters. Discover the latest fashion trends and bring a touch of K-drama style to your wardrobe.
+Welcome to the Hallyu Harbor! 🛍️ This eCommerce website is a place for fans of Kdramas to explore and purchase outfits inspired by their favorite characters. Discover the latest fashion trends and bring a touch of K-drama style to your wardrobe.
 
 ## Tech Stack
 
@@ -26,19 +26,7 @@ Welcome to the Korean Drama Outfit Shop! 🛍️ This eCommerce website is a pla
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Material-UI](https://mui.com/) - React components for faster and easier web development
 
-## Getting Started
+.....to be continue
 
-To get started with the Korean Drama Outfit Shop on your local machine, follow these simple steps:
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/kd-outfit-shop.git
 
-# Navigate to the project directory
-cd kd-outfit-shop
-
-# Install dependencies
-npm install
-
-# Run the development server
-npm start
