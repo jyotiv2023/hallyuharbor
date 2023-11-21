@@ -5,14 +5,12 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import { useState } from "react";
+
 const Footer = () => {
-  const [hovered, setHovered] = useState(false);
   const iconStyle = `
     h-[40px] w-[40px] rounded-full bg-white flex items-center justify-center m-3 
     text-white hover:scale-[1.1] ease-in duration-100 cursor-pointer
-    ${hovered ? "hover:translate-y-[-5px] shadow-lg" : ""}
-  `;
+    hover:translate-y-[-5px] shadow-lg`;
   //   const socialStyle = `m-3 rounded-full cursor-pointer p-2 text-white  ${
   //     hovered ? "hover:translate-y-[-5px] shadow-lg" : ""
   //   }

@@ -1,20 +1,18 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Carousel from "./components/Carousel";
-import Navbar from "./components/Navbar";
-import Category from "./components/Category";
-import Products from "./components/Products";
-import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import ProductListPage from "./pages/ProductListPage";
 function App() {
   return (
-    <>
-      <div className="bg-[#f7efef]">
-        <Navbar />
-        <Carousel />
-        <Category />
-        <Products />
-        <Footer />
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route
+          path="products/:category?/:subCategory?"
+          element={<ProductListPage />}
+        />
+      </Routes>
+    </Router>
   );
 }
 

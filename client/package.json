@@ -16,8 +16,11 @@
     "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.17",
+    "axios": "^1.6.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.3.1",
+    "react-router-dom": "^6.19.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

@@ -1,10 +1,22 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import ApiSlides from "../static/sliderApi";
-//import image2 from "../../public/shopping-slides";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const Carousel = () => {
-  const [slides] = useState(ApiSlides);
-  const [currentSlide, setCurrentSlide] = useState(0); // Change this to 0
+  const navigate = useNavigate();
+
+  const [slides, setSlides] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const fetchSliderData = async () => {
+      const sliderData = await axios.get("http://localhost:3000/api/slides");
+      setSlides(sliderData.data);
+    };
+    fetchSliderData();
+  }, []);
 
   useEffect(() => {
     const lastIndex = slides.length - 1;
@@ -38,6 +50,11 @@ const Carousel = () => {
       prevSlide === 0 ? slides.length - 1 : prevSlide - 1
     );
   };
+  const handleCategoryClick = (slide_category) => {
+    // Navigate to the category route
+    navigate(`/products/${slide_category}`);
+    // fetchSliderData(slide_category);
+  };
 
   return (
     <div className="slider h-[600px] w-[100%] flex items-center justify-between mobile:hidden">
@@ -59,11 +76,16 @@ const Carousel = () => {
             >
               <div className={`${slideStyle}+ relative`}>
                 {/* <div className="relative"> */}
-                <img
-                  className="w-[100%] h-[480px] p-[20px] object-cover cursor-pointer"
-                  src={slide.src}
-                  alt="man"
-                />
+                <Link
+                  to={`/products/${slide.category}`}
+                  onClick={() => handleCategoryClick(slide.category)}
+                >
+                  <img
+                    src={slide.src}
+                    className="w-[100%] h-[400px] cursor-pointer"
+                    alt="category_img"
+                  />
+                </Link>
                 {/* <buttton className=" text-white bg-[#8a4af3] rounded-md shadow-md mt-[30px] p-3 font-pacifico absolute">
                   See more
                 </buttton> */}

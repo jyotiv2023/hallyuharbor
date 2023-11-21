@@ -3,7 +3,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState } from "react";
 
-const Card = ({ item }) => {
+const Card = ({ item, setProductClicked }) => {
   const [hoverEffects, setHoverEffects] = useState(" opacity-0");
   const [hovered, setHovered] = useState(false);
   const iconStyle = `
@@ -26,24 +26,33 @@ const Card = ({ item }) => {
     setHoverEffects(" opacity-0");
     setHovered(false);
   }
+  const handleCartClick = (item) => {
+    console.log("3", item.id);
+    setProductClicked(item);
+  };
   return (
     <div
       className={cardStyle}
       onMouseEnter={handleHoverEnter}
       onMouseLeave={handleHoverExit}
     >
-      <img
-        src={item.src}
-        alt="product"
-        className="w-full h-[300px] object-cover"
-      />
+      <div>
+        <img
+          src={item.image}
+          alt="product"
+          className="w-full h-[300px] object-cover"
+        />
+        <div className="flex space-x-20 mr-2 p-2">
+          <p>Price: ${item.price}</p>
+        </div>
+      </div>
       <div
         className={
           `flex items-center justify-center absolute w-[100%] h-[100%] ease-in duration-100` +
           hoverEffects
         }
       >
-        <div className={iconStyle}>
+        <div className={iconStyle} onClick={() => handleCartClick(item)}>
           <AddShoppingCartIcon />
         </div>
         <div className={iconStyle}>
