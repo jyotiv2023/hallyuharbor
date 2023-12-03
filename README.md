@@ -19,9 +19,9 @@ Welcome to the Hallyu Harbor! 🛍️ This eCommerce website is a place for fans
 
 ## Tech Stack
 
-- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- [Material-UI](https://mui.com/) - React components for faster and easier web development
+- [React](https://reactjs.org/) - for building user interfaces
+- [Tailwind CSS](https://tailwindcss.com/) -  utility-first CSS framework
+- [Material-UI](https://mui.com/) -  for faster and easier component development
 
 .....to be continue
 
