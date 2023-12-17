@@ -1,4 +1,5 @@
 // tailwind.config.js
+import defaultTheme from "tailwindcss/defaultTheme";
 export default {
   content: ["./src/**/*.{html,js}"],
   theme: {
@@ -11,6 +12,10 @@ export default {
       },
       colors: {
         customYellow: "#FFDE59",
+      },
+      screens: {
+        xs: "400px",
+        ...defaultTheme.screens,
       },
     },
   },

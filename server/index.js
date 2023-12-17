@@ -3,29 +3,33 @@ import products from "./api/productsApi.js";
 import categories from "./api/categoriesApi.js";
 import cors from "cors";
 import slides from "./api/slidesApi.js";
+import { Router } from "express";
+
+const router = Router();
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 
+app.use("/api/products", router);
+
 app.get("/api/slides", (req, res) => {
   res.json(slides);
 });
+
 app.get("/api/products", (req, res) => {
   res.json(products);
 });
+
 app.get("/api/categories", (req, res) => {
-  console.log(categories);
   res.json(categories);
 });
 
 app.get("/api/products/:category", (req, res) => {
   const { category } = req.params;
-
   const filteredProducts = products.filter(
     (product) => product.category === category
   );
-  console.log(filteredProducts);
   res.json(filteredProducts);
 });
 
@@ -38,14 +42,18 @@ app.get("/api/products/:category/:subCategory", (req, res) => {
   res.json(filteredProducts);
 });
 
-app.get("/api/products/:id", (req, res) => {
-  const itemId = parseInt(req.params.id);
-  const item = products.find((item) => item.id === itemId);
+// Updated route to get a single product by ID
+app.get("/api/products/:category/:subCategory/:productId", (req, res) => {
+  const productId = req.params.productId;
+  console.log("Requested product id:", productId);
 
-  if (item) {
-    res.json(item);
+  // Find the product with the matching ID in your products array
+  const product = products.find((product) => product.id === productId);
+
+  if (product) {
+    res.json(product);
   } else {
-    res.status(404).json({ error: "Item not found" });
+    res.status(404).json({ error: "Product not found" });
   }
 });
 

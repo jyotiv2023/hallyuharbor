@@ -2,8 +2,10 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Card = ({ item, setProductClicked }) => {
+const Card = ({ item, onClick }) => {
+  const navigate = useNavigate();
   const [hoverEffects, setHoverEffects] = useState(" opacity-0");
   const [hovered, setHovered] = useState(false);
   const iconStyle = `
@@ -27,8 +29,8 @@ const Card = ({ item, setProductClicked }) => {
     setHovered(false);
   }
   const handleCartClick = (item) => {
-    console.log("3", item.id);
-    setProductClicked(item);
+    onClick(item);
+    navigate(`/products/${item.category}/${item.subCategory}/${item.id}`);
   };
   return (
     <div

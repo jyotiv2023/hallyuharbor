@@ -7,14 +7,10 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 
 const Footer = () => {
-  const iconStyle = `
-    h-[40px] w-[40px] rounded-full bg-white flex items-center justify-center m-3 
-    text-white hover:scale-[1.1] ease-in duration-100 cursor-pointer
-    hover:translate-y-[-5px] shadow-lg`;
-  //   const socialStyle = `m-3 rounded-full cursor-pointer p-2 text-white  ${
-  //     hovered ? "hover:translate-y-[-5px] shadow-lg" : ""
-  //   }
-  //   `;
+  const socialStyle = `m-3 rounded-full cursor-pointer p-2 text-white
+    hover:translate-y-[-5px] shadow-lg hover:scale-[1.1] 
+  
+  `;
   return (
     <div className="flex items-center justify-around p-10 bg-black mobile:flex-col mobile:items-start bg-grey">
       <div className="flex-1 flex flex-col flex-wrap p-2">
@@ -23,16 +19,16 @@ const Footer = () => {
         </h1>
         <p></p>
         <div className="flex items-center justify-center mt-3 self-start">
-          <div className={iconStyle + ` bg-blue-700 `}>
+          <div className={socialStyle + ` bg-blue-700 `}>
             <FacebookIcon />
           </div>
-          <div className={iconStyle + ` bg-orange-500`}>
+          <div className={socialStyle + ` bg-orange-500`}>
             <InstagramIcon />
           </div>
-          <div className={iconStyle + ` bg-sky-400`}>
+          <div className={socialStyle + ` bg-sky-400`}>
             <TwitterIcon />
           </div>
-          <div className={iconStyle + ` bg-red-600`}>
+          <div className={socialStyle + ` bg-red-600`}>
             <PinterestIcon />
           </div>
         </div>

@@ -1,13 +1,16 @@
+/* eslint-disable react/prop-types */
 import Card from "../common/Card";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import SingleProduct from "../pages/SingleProduct";
 
-const Products = () => {
+const Products = (props) => {
+  const { onProductClick } = props;
+  console.log("2 products page onproduct clic", onProductClick);
+  //const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [productClicked, setProductClicked] = useState({});
-  const { category, subCategory } = useParams();
+
+  const { category = "", subCategory = "", id = "" } = useParams();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,8 +26,13 @@ const Products = () => {
         if (subCategory) {
           url += `/${subCategory}`;
         }
+        if (id) {
+          url += `/${id}`;
+          // Set selectedProductId when id is available
+        }
 
         const response = await axios.get(url);
+
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -32,18 +40,17 @@ const Products = () => {
     };
 
     fetchProducts();
-  }, [category, subCategory]);
-  console.log("2", productClicked);
+  }, [category, subCategory, id]);
+
   return (
     <div className="p-5 flex flex-wrap">
       {products.map((product) => (
         <Card
           item={product}
           key={product.id}
-          setProductClicked={setProductClicked}
+          onClick={() => onProductClick(product)}
         />
       ))}
-      <SingleProduct productClicked={productClicked} />
     </div>
   );
 };

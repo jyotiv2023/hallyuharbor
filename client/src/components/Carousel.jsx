@@ -1,6 +1,5 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState, useEffect } from "react";
-import ApiSlides from "../static/sliderApi";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -9,11 +8,15 @@ const Carousel = () => {
 
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  console.log(slides);
   useEffect(() => {
     const fetchSliderData = async () => {
-      const sliderData = await axios.get("http://localhost:3000/api/slides");
-      setSlides(sliderData.data);
+      try {
+        const sliderData = await axios.get("http://localhost:3000/api/slides");
+        setSlides(sliderData.data);
+      } catch (error) {
+        console.error("Error fetching slider data:", error);
+      }
     };
     fetchSliderData();
   }, []);
@@ -28,18 +31,19 @@ const Carousel = () => {
     }
   }, [currentSlide, slides]);
 
-  useEffect(() => {
-    let slider = setInterval(() => {
-      setCurrentSlide(currentSlide + 1);
-    }, 2000);
-    return () => {
-      clearInterval(slider);
-    };
-  }, [currentSlide]);
+  // useEffect(() => {
+  //   let slider = setInterval(() => {
+  //     setCurrentSlide(currentSlide + 1);
+  //   }, 2000);
+  //   return () => {
+  //     clearInterval(slider);
+  //   };
+  // }, [currentSlide]);
+
   // Styles
-  const slideStyle = "slide flex items-center justify-center h-[100%]";
+
   const arrowStyle =
-    "rounded-full bg-grey flex justify-center items-center shadow-md hover:cursor-pointer";
+    "rounded-full bg-grey flex justify-center items-center shadow-md hover:cursor-pointer m-5";
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -53,7 +57,7 @@ const Carousel = () => {
   const handleCategoryClick = (slide_category) => {
     // Navigate to the category route
     navigate(`/products/${slide_category}`);
-    // fetchSliderData(slide_category);
+    //fetchSliderData(slide_category);
   };
 
   return (
@@ -66,32 +70,26 @@ const Carousel = () => {
       {/* Slide */}
 
       {slides.map((slide, index) => {
+        console.log("slide", slide);
         if (index === currentSlide) {
           return (
-            <section
-              className={
-                "wrapper flex w-[100%] h-[480px] items-center justify-center shadow-2xl rounded-lg border-[#c0c0c0] border-10px overflow-hidden relative"
-              }
+            <div
+              className={`wrapper flex w-[90%] h-[500px] items-center justify-center shadow-2xl rounded-lg border-[#c0c0c0] border-10px overflow-hidden relative `}
               key={index}
             >
-              <div className={`${slideStyle}+ relative`}>
-                {/* <div className="relative"> */}
+              <div className="flex-1 flex justify-center items-center h-[100%]">
                 <Link
                   to={`/products/${slide.category}`}
                   onClick={() => handleCategoryClick(slide.category)}
                 >
                   <img
+                    className="h-full object-cover"
                     src={slide.src}
-                    className="w-[100%] h-[400px] cursor-pointer"
-                    alt="category_img"
+                    alt="man"
                   />
                 </Link>
-                {/* <buttton className=" text-white bg-[#8a4af3] rounded-md shadow-md mt-[30px] p-3 font-pacifico absolute">
-                  See more
-                </buttton> */}
-                {/* </div> */}
               </div>
-            </section>
+            </div>
           );
         }
       })}
